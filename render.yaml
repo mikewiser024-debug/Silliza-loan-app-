@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: silliza-api
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: ANTHROPIC_API_KEY;
+        sync: false
+      - key: ADMIN_KEY;
+        sync: false
+      - key: MANAGER_WHATSAPP
+        value: 260769309326
+      - key: CEO_WHATSAPP
+        value: 260979939322

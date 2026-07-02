@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Silliza">
+<meta name="theme-color" content="#1a4731">
+<meta name="description" content="Removing hindrances to your peace of mind. Fast bridge loans for transport, food & airtime.">
+
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
+<title>Silliza — Peace of Mind Loans</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green-deep: #1a4731;
+  --green-mid: #2d6a4f;
+  --green-accent: #40916c;
+  --gold: #d4a843;
+  --gold-light: #f0c96a;
+  --cream: #faf7f2;
+  --white: #ffffff;
+  --text-dark: #111c18;
+  --text-muted: #5a7065;
+  --border: #d9e8e0;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { height: 100%; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* ── INSTALL BANNER ── */
+#installBanner {
+  display: none;
+  position: fixed;
+  bottom: calc(76px + var(--safe-bottom));
+  left: 12px; right: 12px;
+  background: var(--green-deep);
+  color: white;
+  border-radius: 16px;
+  padding: 14px 16px;
+  z-index: 500;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  align-items: center;
+  gap: 12px;
+}
+#installBanner .ib-icon { font-size: 1.8rem; flex-shrink: 0; }
+#installBanner .ib-text { flex: 1; }
+#installBanner .ib-title { font-weight: 700; font-size: 0.9rem; }
+#installBanner .ib-sub { font-size: 0.75rem; color: #a8cbb8; margin-top: 2px; }
+#installBanner .ib-btn {
+  background: var(--gold);
+  color: var(--green-deep);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#installBanner .ib-close {
+  background: none; border: none; color: #a8cbb8;
+  font-size: 1.1rem; cursor: pointer; padding: 2px;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--green-deep);
+  padding: calc(12px + var(--safe-top)) 18px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold);
+}
+.nav-logo span { font-size: 0.65rem; display: block; color: #a8cbb8; font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: 0.5px; margin-top: -2px; }
+.nav-chat-btn {
+  background: rgba(212,168,67,0.15);
+  border: 1px solid rgba(212,168,67,0.4);
+  color: var(--gold);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── BOTTOM TAB BAR ── */
+.tab-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: white;
+  border-top: 1px solid var(--border);
+  display: flex;
+  padding-bottom: var(--safe-bottom);
+  z-index: 200;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.07);
+}
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 6px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  background: none;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 500;
+  transition: color 0.15s;
+  gap: 3px;
+}
+.tab.active { color: var(--green-deep); }
+.tab .t-icon { font-size: 1.3rem; }
+.tab .t-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--green-accent);
+  display: none;
+}
+.tab.active .t-dot { display: block; }
+
+/* ── PAGES ── */
+.page { display: none; padding-bottom: calc(70px + var(--safe-bottom)); }
+.page.active { display: block; }
+
+/* ── HOME PAGE ── */
+.hero {
+  background: linear-gradient(160deg, var(--green-deep) 0%, var(--green-mid) 55%, var(--green-accent) 100%);
+  color: white;
+  padding: 36px 20px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -30px; right: -50px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(212,168,67,0.1);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212,168,67,0.18);
+  border: 1px solid rgba(212,168,67,0.4);
+  color: var(--gold-light);
+  padding: 5px 13px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+}
+.pulse {
+  width: 7px; height: 7px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero p { font-size: 0.92rem; color: #b8d8c8; line-height: 1.6; margin-bottom: 24px; }
+
+.hero-stats {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.stat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 10px 14px;
+  flex: 1;
+  text-align: center;
+}
+.stat .s-num { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; color: var(--gold); }
+.stat .s-lbl { font-size: 0.65rem; color: #a8cbb8; margin-top: 1px; letter-spacing: 0.5px; }
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--green-deep);
+  border: none;
+  padding: 15px 28px;
+  border-radius: 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(212,168,67,0.4);
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s;
+}
+.hero-cta:active { opacity: 0.85; }
+
+/* ── SECTION SHARED ── */
+.section { padding: 28px 18px; }
+.sec-label {
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-accent);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.sec-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
+/* ── NEED CARDS ── */
+.needs-grid { display: flex; flex-direction: column; gap: 12px; }
+.need-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: box-shadow 0.2s;
+}
+.need-card:active { box-shadow: 0 2px 12px rgba(26,71,49,0.12); }
+.need-icon-wrap {
+  width: 52px; height: 52px;
+  background: #f0f7f3;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+.need-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--green-deep); margin-bottom: 3px; }
+.need-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; }
+
+/* ── HOW IT WORKS ── */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step {
+  display: flex;
+  gap: 14px;
+  padding: 16px 0;
+  position: relative;
+}
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 18px; top: 52px;
+  width: 2px;
+  bottom: 0;
+  background: var(--border);
+}
+.step-num {
+  width: 38px; height: 38px;
+  background: var(--green-deep);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.step-body h4 { font-size: 0.9rem; font-weight: 600; color: var(--green-deep); margin-bottom: 3px; }
+.step-body p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; }
+
+/* ── APPLY PAGE ── */
+.apply-card {
+  background: white;
+  border-radius: 20px;
+  margin: 18px;
+  padding: 24px 18px;
+  box-shadow: 0 2px 20px rgba(26,71,49,0.07);
+  border: 1px solid var(--border);
+}
+.apply-card h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  color: var(--green-deep);
+  margin-bottom: 4px;
+}
+.apply-card .sub { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 22px; }
+
+/* Purpose selector */
+.purpose-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 20px; }
+.purpose-btn {
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 6px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.purpose-btn .pi { font-size: 1.4rem; display: block; margin-bottom: 5px; }
+.purpose-btn.sel { background: var(--green-deep); border-color: var(--green-deep); color: white; }
+
+/* Amount display */
+.amount-box {
+  background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.amount-box .big {
+  font-family: 'Fraunces', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+.amount-box .lbl { font-size: 0.72rem; color: #a8cbb8; margin-top: 4px; }
+.amount-box .repay { font-size: 0.78rem; color: #c8e8d8; margin-top: 6px; }
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 32px;            /* must contain the thumb so hit area doesn't bleed onto fields below */
+  border-radius: 3px;
+  background: transparent; /* track drawn via pseudo-element instead */
+  margin-bottom: 4px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  touch-action: pan-y;     /* let vertical scroll pass through; only horizontal drags change value */
+  display: block;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px; height: 26px;
+  margin-top: -10px;       /* centre thumb on the 6px track */
+  border-radius: 50%;
+  background: var(--green-accent);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+input[type=range]::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+}
+input[type=range]::-moz-range-thumb {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--green-accent);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+input[type=text], input[type=tel], input[type=date], select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+  background: var(--cream);
+  margin-bottom: 16px;
+  outline: none;
+  -webkit-appearance: none;
+  transition: border-color 0.2s;
+}
+input:focus, select:focus { border-color: var(--green-accent); background: white; }
+
+.submit-btn {
+  width: 100%;
+  background: var(--green-deep);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 4px;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s;
+}
+.submit-btn:active { opacity: 0.85; }
+.submit-btn:disabled { background: #b0c8bc; cursor: not-allowed; }
+
+.terms-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ── SUCCESS ── */
+.success-wrap {
+  padding: 40px 20px;
+  text-align: center;
+}
+.success-icon { font-size: 4rem; margin-bottom: 14px; }
+.success-wrap h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.7rem;
+  color: var(--green-deep);
+  margin-bottom: 8px;
+}
+.success-wrap p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+.summary-box {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.sum-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #f3f3f3;
+  font-size: 0.86rem;
+}
+.sum-row:last-child { border: none; }
+.sum-key { color: var(--text-muted); }
+.sum-val { font-weight: 600; color: var(--green-deep); }
+.sum-val.good { color: var(--green-accent); }
+
+/* ── MY LOANS PAGE ── */
+.loans-empty {
+  padding: 60px 20px;
+  text-align: center;
+}
+.loans-empty .e-icon { font-size: 3rem; margin-bottom: 14px; }
+.loans-empty h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--green-deep); margin-bottom: 8px; }
+.loans-empty p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+
+.loan-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin: 12px 18px;
+  padding: 18px;
+}
+.loan-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.loan-amount { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900; color: var(--green-deep); }
+.loan-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.loan-status.active { background: #d1fae5; color: #065f46; }
+.loan-status.repaid { background: #f0fdf4; color: var(--text-muted); }
+.loan-meta { font-size: 0.8rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px; }
+.loan-progress {
+  margin-top: 14px;
+  background: #f0f4f2;
+  border-radius: 8px;
+  height: 6px;
+  overflow: hidden;
+}
+.loan-progress-bar {
+  height: 100%;
+  background: var(--green-accent);
+  border-radius: 8px;
+  transition: width 0.5s ease;
+}
+
+/* ── CHAT PAGE ── */
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 56px - 62px - var(--safe-bottom));
+}
+.chat-header-bar {
+  background: var(--green-deep);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.agent-avatar {
+  width: 42px; height: 42px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.agent-info .a-name { font-weight: 700; color: white; font-size: 0.95rem; }
+.agent-info .a-status { font-size: 0.7rem; color: #a8cbb8; display: flex; align-items: center; gap: 4px; }
+.a-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: pulse 2s infinite; }
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+.msg {
+  max-width: 84%;
+  padding: 11px 14px;
+  border-radius: 18px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.msg.agent {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--text-dark);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.msg.user {
+  background: var(--green-deep);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.typing { display: flex; align-items: center; gap: 4px; padding: 14px; }
+.typing span {
+  width: 7px; height: 7px;
+  background: var(--green-accent);
+  border-radius: 50%;
+  animation: bounce 1.2s infinite;
+}
+.typing span:nth-child(2) { animation-delay: 0.15s; }
+.typing span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+
+.chips-wrap {
+  padding: 6px 16px 10px;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+.chips-wrap::-webkit-scrollbar { display: none; }
+.chip {
+  background: #f0f7f3;
+  border: 1px solid #d9ece1;
+  border-radius: 18px;
+  padding: 6px 13px;
+  font-size: 0.75rem;
+  color: var(--green-deep);
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.chip:active { background: var(--green-deep); color: white; }
+
+.chat-input-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 14px;
+  background: white;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.chat-textarea {
+  flex: 1;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  resize: none;
+  outline: none;
+  max-height: 100px;
+  line-height: 1.4;
+  background: var(--cream);
+  color: var(--text-dark);
+  margin: 0;
+}
+.chat-textarea:focus { border-color: var(--green-accent); background: white; }
+.send-btn {
+  width: 42px; height: 42px;
+  background: var(--green-deep);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.send-btn:active { opacity: 0.75; }
+.send-btn:disabled { background: #ccc; }
+
+/* ── PROMISE PAGE ── */
+.promise-hero {
+  background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+  color: white;
+  padding: 32px 20px 28px;
+  text-align: center;
+}
+.promise-hero h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.promise-hero p { font-size: 0.85rem; color: #b8d8c8; line-height: 1.55; }
+.promise-list { padding: 20px 18px; display: flex; flex-direction: column; gap: 12px; }
+.promise-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.p-check {
+  width: 32px; height: 32px;
+  background: #d1fae5;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.p-body h4 { font-size: 0.88rem; font-weight: 600; color: var(--green-deep); margin-bottom: 3px; }
+.p-body p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; }
+
+.james-story {
+  background: #f0f7f3;
+  border-left: 3px solid var(--green-accent);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 16px 16px 14px;
+  margin: 0 18px 20px;
+}
+.james-story .j-label { font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-accent); font-weight: 600; margin-bottom: 6px; }
+.james-story p { font-size: 0.83rem; color: var(--text-dark); line-height: 1.6; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- INSTALL BANNER -->
+<div id="installBanner">
+  <div class="ib-icon">📲</div>
+  <div class="ib-text">
+    <div class="ib-title">Add Silliza to Home Screen</div>
+    <div class="ib-sub">Works offline · Instant access</div>
+  </div>
+  <button class="ib-btn" id="installBtn">Install</button>
+  <button class="ib-close" onclick="document.getElementById('installBanner').style.display='none'">✕</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    Silliza
+    <span>Peace of Mind Loans</span>
+  </div>
+  <button class="nav-chat-btn" onclick="switchTab('chat')">💬 Mike wiser AI</button>
+</nav>
+
+<!-- ══════════ HOME PAGE ══════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-badge">
+      <div class="pulse"></div>
+      Available Now · Lusaka
+    </div>
+    <h1>Don't let short days<br>hold you <em>back</em></h1>
+    <p>Transport. Lunch. Airtime and e.t.c, We bridge the gap to payday — fast, simple, and always honest.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="s-num">K5,000</div>
+        <div class="s-lbl">Max Loan</div>
+      </div>
+      <div class="stat">
+        <div class="s-num">&lt; 5min</div>
+        <div class="s-lbl">Approval</div>
+      </div>
+      <div class="stat">
+        <div class="s-num">0</div>
+        <div class="s-lbl">Hidden Fees</div>
+      </div>
+    </div>
+    <button class="hero-cta" onclick="switchTab('apply')">
+      Apply Now — It's Free →
+    </button>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">What we cover</div>
+    <div class="sec-title">Three things<br>that hold you back</div>
+    <div class="needs-grid">
+      <div class="need-card">
+        <div class="need-icon-wrap">🚌</div>
+        <div>
+          <h3>Transport</h3>
+          <p>Arrive to work fresh and on time — no long walks in the heat.</p>
+        </div>
+      </div>
+      <div class="need-card">
+        <div class="need-icon-wrap">🍱</div>
+        <div>
+          <h3>Lunch & Food</h3>
+          <p>Work stronger on a full stomach. Your body and mind will thank you.</p>
+        </div>
+      </div>
+      <div class="need-card">
+        <div class="need-icon-wrap">📱</div>
+        <div>
+          <h3>Airtime</h3>
+          <p>Stay connected to family, your boss, and emergency contacts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <div class="sec-label">The process</div>
+    <div class="sec-title">Simple steps,<br>fast results</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Tell us what you need</h4>
+          <p>Transport, food, airtime or what is weigh you down. Choose your amount — K10 to K5,000.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Simple details only</h4>
+          <p>Your name, phone, employer, and payday date. No heavy paperwork.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Clear terms, always</h4>
+          <p>We tell you exactly what you receive, repay, and when. No surprises.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Funds in minutes</h4>
+          <p>Not hours, not days. You get what you need and get back to life.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ APPLY PAGE ══════════ -->
+<div class="page" id="page-apply">
+  <div id="applyForm">
+    <div class="apply-card">
+      <h2>Apply Now</h2>
+      <p class="sub">Takes less than 2 minutes. All terms shown before you agree.</p>
+
+      <label>What do you need?</label>
+      <div class="purpose-grid">
+        <button class="purpose-btn sel" onclick="selPurpose(this,'Transport')">
+          <span class="pi">🚌</span>Transport
+        </button>
+        <button class="purpose-btn" onclick="selPurpose(this,'Food & Lunch')">
+          <span class="pi">🍱</span>Food & Lunch
+        </button>
+        <button class="purpose-btn" onclick="selPurpose(this,'Airtime')">
+          <span class="pi">📱</span>Airtime
+        </button>
+        <button class="purpose-btn" onclick="selPurpose(this,'Airtime')">
+          <span class="pi">Other</span>things
+        </button>
+      </div>
+
+      <div class="amount-box">
+        <div class="big" id="amtDisplay">K 150</div>
+        <div class="lbl">LOAN AMOUNT</div>
+        <div class="repay" id="repayDisplay">Select a loan term to see your repayment</div>
+      </div>
+      <input type="range" min="10" max="5000" step="10" value="150" id="amtSlider" oninput="onAmt(this.value)">
+      <div class="range-labels"><span>K 10</span><span>K 5,000</span></div>
+
+      <!-- Collateral Requirements -->
+      <div style="background:#f0f7f3;border:1px solid #c8e3d4;border-radius:14px;padding:14px 16px;margin:10px 0 18px;">
+        <div style="font-weight:700;color:#1a3c2e;margin-bottom:8px;font-size:0.95rem;">📋 Required Collaterals</div>
+        <div style="font-size:0.82rem;color:#2d6a4f;display:flex;flex-direction:column;gap:5px;">
+          <span>🪪 National Registration Card (NRC) — front &amp; back</span>
+          <span>📞 Active Zambian phone number</span>
+          <span>🏘️ Block &amp; Room address (where you stay)</span>
+          <span>🏢 Employer / Workplace name</span>
+        </div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #c8e3d4;">
+          <div style="font-weight:700;color:#1a3c2e;margin-bottom:6px;font-size:0.88rem;">📦 Gadget Collateral <span style="font-weight:400;color:#555;">(value must cover loan amount)</span></div>
+          <div style="font-size:0.82rem;color:#2d6a4f;display:flex;flex-direction:column;gap:4px;">
+            <span>💻 Laptop</span>
+            <span>📱 Phone</span>
+            <span>🔊 Speaker</span>
+            <span>🎧 Pods / Earbuds</span>
+          </div>
+          <div style="margin-top:8px;font-size:0.78rem;background:#fffbe6;border:1px solid #f0d060;border-radius:8px;padding:7px 10px;color:#7a5c00;">
+            ⚠️ Your gadget collateral value must be <strong>equal to or greater than</strong> the loan amount you are requesting.
+          </div>
+        </div>
+      </div>
+
+      <label>Full Name</label>
+      <input type="text" id="f-name" placeholder="Your full name" autocomplete="name">
+
+      <label>Phone Number</label>
+      <input type="tel" id="f-phone" placeholder="097 000 0000" autocomplete="tel">
+
+      <label>NRC Number</label>
+      <input type="text" id="f-nrc" placeholder="e.g. 123456/78/9" autocomplete="off">
+
+      <label>Block &amp; Room / Address</label>
+      <input type="text" id="f-address" placeholder="e.g. Block 4, Room 12, Matero">
+
+      <label>Loan Term</label>
+      <select id="f-term" onchange="onTermChange(this.value)" style="width:100%;padding:12px 14px;border:1.5px solid #d1d5db;border-radius:12px;font-size:0.95rem;background:#fff;color:#1a3c2e;margin-bottom:4px;">
+        <option value="">— Select loan duration —</option>
+        <option value="1week">1 Week — 15% fee</option>
+        <option value="2weeks">2 Weeks — 25% fee</option>
+        <option value="3weeks">3 Weeks — 35% fee</option>
+        <option value="1month">1 Month — 45% fee</option>
+      </select>
+
+      <label>Employer / Workplace</label>
+      <input type="text" id="f-work" placeholder="Company or employer name">
+
+      <!-- Gadget Collateral -->
+      <label>Gadget Collateral</label>
+      <select id="f-collateral" onchange="onCollateralChange(this.value)" style="width:100%;padding:12px 14px;border:1.5px solid #d1d5db;border-radius:12px;font-size:0.95rem;background:#fff;color:#1a3c2e;margin-bottom:4px;">
+        <option value="">— Select your collateral item —</option>
+        <option value="Laptop">💻 Laptop</option>
+        <option value="Phone">📱 Phone</option>
+        <option value="Speaker">🔊 Speaker</option>
+        <option value="Pods / Earbuds">🎧 Pods / Earbuds</option>
+        <option value="Other">📦 Anything else that values the amount</option>
+      </select>
+      <div id="otherCollateralWrap" style="display:none;margin-bottom:4px;">
+        <input type="text" id="f-collateral-other" placeholder="Describe the item (e.g. TV, bicycle, watch…)" style="margin-bottom:0;">
+      </div>
+      <input type="text" id="f-collateral-desc" placeholder="Brand, model, condition (e.g. HP Pavilion, good condition)" style="margin-bottom:4px;">
+      <div id="collateralWarning" style="display:none;font-size:0.78rem;background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:7px 10px;color:#856404;margin-bottom:10px;">
+        ⚠️ Your item's value must be <strong>equal to or greater than</strong> the loan amount of <strong id="collateralAmtRef">K150</strong>.
+      </div>
+
+      <!-- NRC Photo Capture -->
+      <div style="margin:6px 0 4px;font-weight:600;color:#1a3c2e;font-size:0.9rem;">🪪 NRC Photo — Front &amp; Back</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+        <!-- Front -->
+        <div>
+          <div style="font-size:0.78rem;color:#555;margin-bottom:4px;font-weight:600;">FRONT SIDE</div>
+          <label for="f-nrc-front" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:2px dashed #a8d5b5;border-radius:12px;padding:12px 8px;cursor:pointer;background:#f9fdf9;min-height:90px;" id="nrcFrontLabel">
+            <span style="font-size:1.6rem;">📷</span>
+            <span style="font-size:0.72rem;color:#2d6a4f;text-align:center;">Tap to capture<br>or upload</span>
+          </label>
+          <input type="file" id="f-nrc-front" accept="image/*" capture="environment" style="display:none" onchange="previewNRC(this,'nrcFrontLabel','nrcFrontPreview')">
+          <img id="nrcFrontPreview" style="display:none;width:100%;border-radius:10px;margin-top:6px;border:1px solid #c8e3d4;" alt="NRC Front">
+        </div>
+        <!-- Back -->
+        <div>
+          <div style="font-size:0.78rem;color:#555;margin-bottom:4px;font-weight:600;">BACK SIDE</div>
+          <label for="f-nrc-back" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:2px dashed #a8d5b5;border-radius:12px;padding:12px 8px;cursor:pointer;background:#f9fdf9;min-height:90px;" id="nrcBackLabel">
+            <span style="font-size:1.6rem;">📷</span>
+            <span style="font-size:0.72rem;color:#2d6a4f;text-align:center;">Tap to capture<br>or upload</span>
+          </label>
+          <input type="file" id="f-nrc-back" accept="image/*" capture="environment" style="display:none" onchange="previewNRC(this,'nrcBackLabel','nrcBackPreview')">
+          <img id="nrcBackPreview" style="display:none;width:100%;border-radius:10px;margin-top:6px;border:1px solid #c8e3d4;" alt="NRC Back">
+        </div>
+      </div>
+
+      <button class="submit-btn" id="subBtn" onclick="submitApp()">Get My K150 Now →</button>
+      <div class="terms-note">By applying you agree to our terms. All fees are disclosed before any agreement.</div>
+    </div>
+  </div>
+
+  <!-- SUCCESS STATE -->
+  <div id="applySuccess" style="display:none">
+    <div class="success-wrap">
+      <div class="success-icon">🎉</div>
+      <h2>Application Sent!</h2>
+      <p>Your application is being reviewed. We'll reply within minutes — no long waits.</p>
+      <div class="summary-box" id="sumBox"></div>
+
+      <!-- Admin notification status -->
+      <div id="adminNotifyNote" style="margin:14px 0 6px;padding:12px 14px;background:#f0f7f3;border:1px solid #c8e3d4;border-radius:12px;font-size:0.8rem;color:#2d6a4f;display:flex;align-items:center;gap:8px;">
+        <span>📲</span>
+        <span>Tap below to notify the Manager &amp; CEO on WhatsApp.</span>
+      </div>
+
+      <!-- Admin notification buttons — always visible -->
+      <div style="display:flex;gap:8px;margin-bottom:10px;">
+        <a id="waManagerLink" href="#" target="_blank" rel="noopener"
+          style="background:#075e54;flex:1;text-align:center;text-decoration:none;display:block;padding:13px 0;border-radius:14px;font-weight:700;color:#fff;font-size:0.9rem;">
+          👔 Notify Manager
+        </a>
+        <a id="waCeoLink" href="#" target="_blank" rel="noopener"
+          style="background:#128c7e;flex:1;text-align:center;text-decoration:none;display:block;padding:13px 0;border-radius:14px;font-weight:700;color:#fff;font-size:0.9rem;">
+          🏦 Notify CEO
+        </a>
+      </div>
+      <button id="notifyAdminBtn" class="submit-btn" style="background:var(--green-mid);margin-bottom:10px;display:block;" onclick="notifyAdmin()">
+        📲 Notify Both (Manager + CEO)
+      </button>
+
+      <button class="submit-btn" onclick="resetApply()">Apply Again</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MY LOANS PAGE ══════════ -->
+<div class="page" id="page-loans">
+  <div id="loansContent"></div>
+</div>
+
+<!-- ══════════ SILA CHAT PAGE ══════════ -->
+<div class="page" id="page-chat">
+  <div class="chat-page">
+    <div class="chat-header-bar">
+      <div class="agent-avatar">🤖</div>
+      <div class="agent-info">
+        <div class="a-name">Mike wiser — Your Silliza Agent</div>
+        <div class="a-status"><span class="a-dot"></span> Online · Here to help</div>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMsgs">
+      <div class="msg agent">
+        Hello! 👋 I'm <strong>Mike wiser</strong>, your Silliza assistant. I can help you apply for a loan, explain our terms, or just talk through your situation. What's on your mind?
+      </div>
+    </div>
+
+    <div class="chips-wrap" id="chipsWrap">
+      <span class="chip" onclick="useChip(this)">How does it work?</span>
+      <span class="chip" onclick="useChip(this)">What are the fees?</span>
+      <span class="chip" onclick="useChip(this)">How fast do I get money?</span>
+      <span class="chip" onclick="useChip(this)">I need transport money</span>
+      <span class="chip" onclick="useChip(this)">Can I repay early?</span>
+    </div>
+
+    <div class="chat-input-bar">
+      <textarea class="chat-textarea" id="chatIn" placeholder="Ask MIKE WISER anything…" rows="1" oninput="autoResize(this)" onkeydown="chatKey(event)"></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PROMISE PAGE ══════════ -->
+<div class="page" id="page-promise">
+  <div class="promise-hero">
+    <h2>Our Promise to You</h2>
+    <p>Removing hindrances to your peace of mind — that's not just our tagline. It's everything we do.</p>
+  </div>
+
+  <div class="james-story">
+    <div class="j-label">A real story</div>
+    <p>"James had four days until pay. No bus fare, no lunch, no airtime. One message to Silliza changed everything — fast reply, clear terms, funds within minutes. Peace returned."</p>
+  </div>
+
+  <div class="promise-list">
+    <div class="promise-item">
+      <div class="p-check">✅</div>
+      <div class="p-body">
+        <h4>Exact amount, always</h4>
+        <p>You're told exactly what you receive and exactly what you repay. Never more.</p>
+      </div>
+    </div>
+    <div class="promise-item">
+      <div class="p-check">✅</div>
+      <div class="p-body">
+        <h4>Zero hidden fees</h4>
+        <p>No surprise charges added later. What we say is what you pay.</p>
+      </div>
+    </div>
+    <div class="promise-item">
+      <div class="p-check">✅</div>
+      <div class="p-body">
+        <h4>Funds in minutes</h4>
+        <p>Not hours or days. When you need it, you get it fast.</p>
+      </div>
+    </div>
+    <div class="promise-item">
+      <div class="p-check">✅</div>
+      <div class="p-body">
+        <h4>Respectful treatment</h4>
+        <p>No judgment. No pressure. You are helped with dignity every time.</p>
+      </div>
+    </div>
+    <div class="promise-item">
+      <div class="p-check">✅</div>
+      <div class="p-body">
+        <h4>Short-term only</h4>
+        <p>We are a bridge to payday, not a long-term debt. We protect you from falling deeper.</p>
+      </div>
+    </div>
+    <div class="promise-item">
+      <div class="p-check">✅</div>
+      <div class="p-body">
+        <h4>Simple process</h4>
+        <p>No long forms, no guarantors, no days of waiting. Just what you need.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ BOTTOM TAB BAR ══════════ -->
+<div class="tab-bar">
+  <button class="tab active" id="tab-home" onclick="switchTab('home')">
+    <span class="t-icon">🏠</span>
+    <span>Home</span>
+    <span class="t-dot"></span>
+  </button>
+  <button class="tab" id="tab-apply" onclick="switchTab('apply')">
+    <span class="t-icon">⚡</span>
+    <span>Apply</span>
+    <span class="t-dot"></span>
+  </button>
+  <button class="tab" id="tab-loans" onclick="switchTab('loans')">
+    <span class="t-icon">📋</span>
+    <span>My Loans</span>
+    <span class="t-dot"></span>
+  </button>
+  <button class="tab" id="tab-chat" onclick="switchTab('chat')">
+    <span class="t-icon">🤖</span>
+    <span>Mike wiser AI</span>
+    <span class="t-dot"></span>
+  </button>
+  <button class="tab" id="tab-promise" onclick="switchTab('promise')">
+    <span class="t-icon">🛡️</span>
+    <span>Promise</span>
+    <span class="t-dot"></span>
+  </button>
+</div>
+
+<script>
+// ── STATE ──
+let currentTab = 'home';
+let purpose = 'Transport';
+let loanAmt = 150;
+let chatHistory = [];
+let loans = JSON.parse(localStorage.getItem('silliza_loans') || '[]');
+
+const SYSTEM = `You are Mike wiser, the friendly AI assistant for Silliza — a micro-lending service in Lusaka, Zambia.
+
+Silliza's mission: "Removing hindrances to your peace of mind."
+
+ABOUT SILLIZA:
+- Short-term bridge loans for people between paydays
+- Covers: Transport (bus/taxi), Food & Lunch, Airtime
+- Amounts: K10–K5,000 (Zambian Kwacha)
+- Repayment: on next payday only — always short-term
+- Service fee: 20% for 1 week, 30% for 2 weeks, 40% for 3 weeks, 50% for 1 month (e.g. borrow K200 for 1 week → repay K230; borrow K200 for 2 weeks → repay K250; borrow K200 for 3 weeks → repay K270; borrow K200 for 1 month → repay K290)
+- Process: fast (minutes), simple questions, no heavy paperwork, no guarantors
+- All terms disclosed upfront — exact amount, exact repayment, exact date
+- Zero hidden fees, ever
+- Friendly and respectful — no judgment about financial hardship
+
+YOUR PERSONALITY (Mike wiser): you are responsible for anything about silliza
+- Warm, calm, like a knowledgeable friend
+- Acknowledge feelings before jumping to solutions
+- Keep answers short and easy to understand
+- Use occasional emojis — not too many
+- Never judgmental — month-end struggles are common
+- Honest about what Silliza can and can't do
+- Encourage people who need help to apply — remind them it's fast
+
+JAMES'S STORY (know this):
+James had 4 days until payday. He had no bus fare, no lunch money, no airtime. He tried other lenders — too much paperwork, hidden fees, long waits. A colleague told him about Silliza. He messaged, got a fast reply, clear terms, and funds within minutes. He covered transport, food, and airtime. His stress faded. He repaid on payday exactly as agreed. He told everyone about Silliza.
+
+If asked about applying, guide them to use the Apply tab. Keep responses concise.`;
+
+// ── NAVIGATION ──
+function switchTab(tab) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+  currentTab = tab;
+  if (tab === 'loans') renderLoans();
+  if (tab === 'chat') setTimeout(() => document.getElementById('chatMsgs').scrollTop = 9999, 50);
+  window.scrollTo(0, 0);
+}
+
+// ── APPLY FORM ──
+function selPurpose(btn, p) {
+  document.querySelectorAll('.purpose-btn').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  purpose = p;
+}
+
+// Returns interest rate based on selected loan term
+// 1 week → 15%, 2 weeks → 25%, 3 weeks → 35%, 1 month → 45%
+function getRate() {
+  const termEl = document.getElementById('f-term');
+  if (termEl && termEl.value) {
+    const map = { '1week': 0.15, '2weeks': 0.25, '3weeks': 0.35, '1month': 0.45 };
+    return map[termEl.value] || 0.15;
+  }
+  return 0.15; // default to min rate before term chosen
+}
+
+// Returns payday Date object based on selected term
+function getPaydayFromTerm() {
+  const termEl = document.getElementById('f-term');
+  if (!termEl || !termEl.value) return null;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const daysMap = { '1week': 7, '2weeks': 14, '3weeks': 21, '1month': 30 };
+  const days = daysMap[termEl.value] || 7;
+  const pd = new Date(today);
+  pd.setDate(pd.getDate() + days);
+  return pd;
+}
+
+function onTermChange(val) {
+  onAmt(loanAmt);
+}
+
+function onAmt(v) {
+  loanAmt = parseInt(v);
+  const rate = getRate();
+  const fee = Math.round(loanAmt * rate);
+  const ratePct = Math.round(rate * 100);
+  document.getElementById('amtDisplay').textContent = `K ${v}`;
+  const termEl2 = document.getElementById('f-term');
+  const termLbls = { '1week': '1 Week', '2weeks': '2 Weeks', '3weeks': '3 Weeks', '1month': '1 Month' };
+  const tLabel = termEl2 && termEl2.value ? termLbls[termEl2.value] : '';
+  document.getElementById('repayDisplay').textContent = tLabel
+    ? `Repay K ${loanAmt + fee} in ${tLabel} · Fee: K ${fee} (${ratePct}%)`
+    : `Select a loan term to see your repayment`;
+  document.getElementById('subBtn').textContent = `Get My K${v} Now →`;
+  // Keep collateral warning in sync
+  const ref = document.getElementById('collateralAmtRef');
+  if (ref) ref.textContent = `K${loanAmt}`;
+  const warn = document.getElementById('collateralWarning');
+  if (warn && document.getElementById('f-collateral').value) warn.style.display = 'block';
+}
+
+function onCollateralChange(val) {
+  document.getElementById('collateralWarning').style.display = val ? 'block' : 'none';
+  document.getElementById('otherCollateralWrap').style.display = val === 'Other' ? 'block' : 'none';
+  const ref = document.getElementById('collateralAmtRef');
+  if (ref) ref.textContent = `K${loanAmt}`;
+}
+
+async function submitApp() {
+  const name       = document.getElementById('f-name').value.trim();
+  const phone      = document.getElementById('f-phone').value.trim();
+  const nrc        = document.getElementById('f-nrc').value.trim();
+  const address    = document.getElementById('f-address').value.trim();
+  const termEl     = document.getElementById('f-term');
+  const term       = termEl ? termEl.value : '';
+  const termLabels = { '1week': '1 Week', '2weeks': '2 Weeks', '3weeks': '3 Weeks', '1month': '1 Month' };
+  const termLabel  = termLabels[term] || '';
+  const pdObj      = getPaydayFromTerm();
+  const payday     = pdObj ? pdObj.toISOString().split('T')[0] : '';
+  const work       = document.getElementById('f-work').value.trim();
+  const collateralRaw = document.getElementById('f-collateral').value;
+  const collateralOther = document.getElementById('f-collateral-other').value.trim();
+  const collateral = collateralRaw === 'Other' ? (collateralOther || 'Other') : collateralRaw;
+  const collDesc   = document.getElementById('f-collateral-desc').value.trim();
+  const nrcFrontFile = document.getElementById('f-nrc-front').files[0];
+  const nrcBackFile  = document.getElementById('f-nrc-back').files[0];
+
+  if (!name || !phone || !nrc || !address || !term || !work) {
+    alert('Please fill in all fields.');
+    return;
+  }
+  if (!collateralRaw) {
+    alert('Please select a collateral item.');
+    return;
+  }
+  if (collateralRaw === 'Other' && !collateralOther) {
+    alert('Please describe your collateral item.');
+    return;
+  }
+  if (!collDesc) {
+    alert('Please describe your collateral gadget (brand, model, condition).');
+    return;
+  }
+  // NRC photos are encouraged but not required to submit
+  const nrcNote = (!nrcFrontFile || !nrcBackFile)
+    ? ' (NRC photos not attached — admin may request later)'
+    : ' (NRC photos attached ✅)';
+
+  const rate = getRate();
+  const ratePct = Math.round(rate * 100);
+  const fee = Math.round(loanAmt * rate);
+  const repay = loanAmt + fee;
+  const pd = pdObj || new Date(payday);
+  const pdStr = pd.toLocaleDateString('en-ZM', {day:'numeric',month:'long',year:'numeric'});
+
+  // Save loan
+  const loan = { id: Date.now(), name, phone, nrc, address, work, collateral, collDesc, purpose, amount: loanAmt, fee, repay, rate: ratePct, term: termLabel, payday, pdStr, status: 'active', date: new Date().toLocaleDateString() };
+  loans.unshift(loan);
+  localStorage.setItem('silliza_loans', JSON.stringify(loans));
+
+  // Also save to server
+  try {
+    await fetch('/api/loans', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(loan)
+    });
+  } catch(e) { console.warn('Server save failed (offline mode):', e); }
+
+  // ── ADMIN NOTIFICATION via WhatsApp ──
+  const MANAGER_WHATSAPP = '260769309326';
+  const CEO_WHATSAPP     = '260979939322';
+
+  const nrcStatus = (!document.getElementById('f-nrc-front').files[0] || !document.getElementById('f-nrc-back').files[0])
+    ? '⚠️ NRC photos not attached — request separately.'
+    : '📸 NRC photos captured by applicant.';
+
+  const msg = [
+    '🔔 *NEW LOAN APPLICATION — Silliza*',
+    '',
+    `👤 *Name:* ${name}`,
+    `📞 *Phone:* ${phone}`,
+    `🪪 *NRC:* ${nrc}`,
+    `🏘️ *Address:* ${address}`,
+    `🏢 *Employer:* ${work}`,
+    `🎯 *Purpose:* ${purpose}`,
+    `💰 *Amount:* K${loanAmt}`,
+    `🔄 *Repay:* K${repay} on ${pdStr}`,
+    `📦 *Collateral:* ${collateral} — ${collDesc}`,
+    `📅 *Applied:* ${new Date().toLocaleString('en-ZM')}`,
+    '',
+    nrcStatus,
+    'Reply to this applicant on their number above.'
+  ].join('\n');
+
+  const encodedMsg = encodeURIComponent(msg);
+  const waUrlManager = `https://wa.me/${MANAGER_WHATSAPP}?text=${encodedMsg}`;
+  const waUrlCeo     = `https://wa.me/${CEO_WHATSAPP}?text=${encodedMsg}`;
+
+  // Store URLs — always show the notify buttons (never rely on popup)
+  window._lastWaUrl    = waUrlManager;
+  window._lastWaUrlCeo = waUrlCeo;
+
+  // Wire up individual anchor buttons (most reliable on mobile)
+  const mgLink  = document.getElementById('waManagerLink');
+  const ceoLink = document.getElementById('waCeoLink');
+  if (mgLink)  mgLink.href  = waUrlManager;
+  if (ceoLink) ceoLink.href = waUrlCeo;
+
+  // Always show the WhatsApp notify section
+  const noteEl = document.getElementById('adminNotifyNote');
+  const btnEl  = document.getElementById('notifyAdminBtn');
+  if (noteEl) noteEl.innerHTML = '<span>📲</span><span>Tap below to notify the Manager &amp; CEO on WhatsApp.</span>';
+  if (btnEl)  btnEl.style.display = 'block';
+
+  // Auto-open WhatsApp for Manager immediately on submission
+  // (most reliable: create and click a real anchor)
+  try {
+    const autoA = document.createElement('a');
+    autoA.href = waUrlManager;
+    autoA.target = '_blank';
+    autoA.rel = 'noopener';
+    document.body.appendChild(autoA);
+    autoA.click();
+    document.body.removeChild(autoA);
+    // CEO notified via the waCeoLink anchor — user taps that separately
+    if (noteEl) noteEl.innerHTML = '<span>📨</span><span>Manager notified! Tap <strong>Notify CEO</strong> below to also alert the CEO.</span>';
+  } catch(autoErr) {
+    console.warn('Auto-notify failed, manual buttons still available:', autoErr);
+  }
+
+  // Show summary
+  document.getElementById('sumBox').innerHTML = `
+    <div class="sum-row"><span class="sum-key">Name</span><span class="sum-val">${name}</span></div>
+    <div class="sum-row"><span class="sum-key">Phone</span><span class="sum-val">${phone}</span></div>
+    <div class="sum-row"><span class="sum-key">NRC</span><span class="sum-val">${nrc}</span></div>
+    <div class="sum-row"><span class="sum-key">Address</span><span class="sum-val">${address}</span></div>
+    <div class="sum-row"><span class="sum-key">Purpose</span><span class="sum-val">${purpose}</span></div>
+    <div class="sum-row"><span class="sum-key">Amount</span><span class="sum-val good">K ${loanAmt}</span></div>
+    <div class="sum-row"><span class="sum-key">Service Fee (${ratePct}%)</span><span class="sum-val">K ${fee}</span></div>
+    <div class="sum-row"><span class="sum-key">Total to Repay</span><span class="sum-val">K ${repay}</span></div>
+    <div class="sum-row"><span class="sum-key">Loan Term</span><span class="sum-val">${termLabel}</span></div>
+    <div class="sum-row"><span class="sum-key">Repayment Date</span><span class="sum-val">${pdStr}</span></div>
+    <div class="sum-row"><span class="sum-key">Collateral</span><span class="sum-val">${collateral}</span></div>
+    <div class="sum-row"><span class="sum-key">NRC Photos</span><span class="sum-val ${nrcFrontFile && nrcBackFile ? 'good' : ''}">${nrcFrontFile && nrcBackFile ? 'Captured ✅' : 'Not attached ⚠️'}</span></div>
+    <div class="sum-row"><span class="sum-key">Hidden Fees</span><span class="sum-val good">None ✅</span></div>
+  `;
+
+  document.getElementById('applyForm').style.display = 'none';
+  document.getElementById('applySuccess').style.display = 'block';
+
+  // Greet in chat
+  setTimeout(() => {
+    chatHistory.push({ role:'user', content:`I just applied for a K${loanAmt} loan for ${purpose}. My name is ${name}.` });
+    addAgentMsg(`Great news, ${name.split(' ')[0]}! 🎉 Your K${loanAmt} application for ${purpose} has been submitted. We'll respond within minutes. Repay K${repay} on ${pdStr} — exactly as shown, no surprises. Anything else I can help with?`);
+    chatHistory.push({ role:'assistant', content: `Great news! Application submitted for K${loanAmt}. Repay K${repay} on ${pdStr}.` });
+  }, 1200);
+}
+
+// Fallback: manually open WhatsApp notification for Manager & CEO
+function notifyAdmin() {
+  // Prefer stored URLs; fall back to what's already on the anchor elements
+  const managerUrl = window._lastWaUrl    || document.getElementById('waManagerLink')?.href;
+  const ceoUrl     = window._lastWaUrlCeo || document.getElementById('waCeoLink')?.href;
+
+  if (!managerUrl || managerUrl === '#' || managerUrl === window.location.href) {
+    alert('No loan application found. Please submit an application first.');
+    return;
+  }
+
+  const a1 = document.createElement('a');
+  a1.href = managerUrl;
+  a1.target = '_blank';
+  a1.rel = 'noopener';
+  document.body.appendChild(a1);
+  a1.click();
+  document.body.removeChild(a1);
+
+  setTimeout(() => {
+    if (ceoUrl && ceoUrl !== '#' && ceoUrl !== window.location.href) {
+      const a2 = document.createElement('a');
+      a2.href = ceoUrl;
+      a2.target = '_blank';
+      a2.rel = 'noopener';
+      document.body.appendChild(a2);
+      a2.click();
+      document.body.removeChild(a2);
+    }
+  }, 800);
+
+  const btnEl  = document.getElementById('notifyAdminBtn');
+  const noteEl = document.getElementById('adminNotifyNote');
+  if (btnEl)  { btnEl.textContent = '✅ Notified! Tap again if needed'; btnEl.style.background = '#2d6a4f'; }
+  if (noteEl) noteEl.innerHTML = '<span>📨</span><span>Manager &amp; CEO notified via WhatsApp!</span>';
+}
+
+function resetApply() {
+  document.getElementById('applyForm').style.display = 'block';
+  document.getElementById('applySuccess').style.display = 'none';
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-phone').value = '';
+  document.getElementById('f-nrc').value = '';
+  document.getElementById('f-address').value = '';
+  document.getElementById('f-term').value = '';
+  document.getElementById('f-work').value = '';
+  document.getElementById('f-nrc-front').value = '';
+  document.getElementById('f-nrc-back').value = '';
+  document.getElementById('f-collateral').value = '';
+  document.getElementById('f-collateral-desc').value = '';
+  document.getElementById('f-collateral-other').value = '';
+  document.getElementById('otherCollateralWrap').style.display = 'none';
+  const cw = document.getElementById('collateralWarning');
+  if (cw) cw.style.display = 'none';
+  const fp = document.getElementById('nrcFrontPreview');
+  const bp = document.getElementById('nrcBackPreview');
+  if (fp) { fp.style.display='none'; fp.src=''; }
+  if (bp) { bp.style.display='none'; bp.src=''; }
+  document.getElementById('nrcFrontLabel').innerHTML = '<span style="font-size:1.6rem;">📷</span><span style="font-size:0.72rem;color:#2d6a4f;text-align:center;">Tap to capture<br>or upload</span>';
+  document.getElementById('nrcBackLabel').innerHTML  = '<span style="font-size:1.6rem;">📷</span><span style="font-size:0.72rem;color:#2d6a4f;text-align:center;">Tap to capture<br>or upload</span>';
+  loanAmt = 150;
+  document.getElementById('amtSlider').value = 150;
+  onAmt(150);
+}
+
+function previewNRC(input, labelId, previewId) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = document.getElementById(previewId);
+    const lbl = document.getElementById(labelId);
+    img.src = e.target.result;
+    img.style.display = 'block';
+    lbl.innerHTML = '<span style="font-size:1rem;color:#2d6a4f;">✅ Photo ready</span>';
+  };
+  reader.readAsDataURL(file);
+}
+
+// Term selector is handled via onTermChange()
+
+// ── LOANS PAGE ──
+function renderLoans() {
+  const el = document.getElementById('loansContent');
+  if (!loans.length) {
+    el.innerHTML = `
+      <div class="loans-empty">
+        <div class="e-icon">📋</div>
+        <h3>No loans yet</h3>
+        <p>Your loan history will appear here once you apply.</p>
+        <button class="submit-btn" style="margin-top:20px;max-width:220px" onclick="switchTab('apply')">Apply Now →</button>
+      </div>`;
+    return;
+  }
+
+  const now = new Date();
+  el.innerHTML = `<div style="padding:18px 18px 4px"><div class="sec-label">Loan History</div><div class="sec-title" style="font-size:1.2rem">Your Loans</div></div>` +
+    loans.map(l => {
+      const pd = new Date(l.payday);
+      const days = Math.ceil((pd - now) / 86400000);
+      const progress = l.status === 'repaid' ? 100 : Math.max(0, Math.min(90, 100 - days * 3));
+      return `
+      <div class="loan-card">
+        <div class="loan-card-top">
+          <div class="loan-amount">K ${l.amount}</div>
+          <div class="loan-status ${l.status}">${l.status === 'active' ? '● Active' : '✓ Repaid'}</div>
+        </div>
+        <div class="loan-meta">
+          <span>📋 ${l.purpose} · Applied ${l.date}</span>
+          <span>⏱ ${l.term || ''} · 💰 Repay K${l.repay} by ${l.pdStr}</span>
+        </div>
+        <div class="loan-progress"><div class="loan-progress-bar" style="width:${progress}%"></div></div>
+        ${l.status === 'active' ? `<button onclick="markRepaid(${l.id})" style="margin-top:10px;width:100%;padding:10px;border:1.5px solid var(--green-accent);background:white;color:var(--green-accent);border-radius:10px;font-weight:600;font-size:0.82rem;cursor:pointer;font-family:'DM Sans',sans-serif">Mark as Repaid</button>` : ''}
+      </div>`;
+    }).join('');
+}
+
+function markRepaid(id) {
+  loans = loans.map(l => l.id === id ? {...l, status:'repaid'} : l);
+  localStorage.setItem('silliza_loans', JSON.stringify(loans));
+  renderLoans();
+}
+
+// ── CHAT ──
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+}
+
+function chatKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+}
+
+function useChip(el) {
+  document.getElementById('chatIn').value = el.textContent;
+  document.getElementById('chipsWrap').style.display = 'none';
+  sendChat();
+}
+
+async function sendChat() {
+  const inp = document.getElementById('chatIn');
+  const text = inp.value.trim();
+  if (!text) return;
+
+  inp.value = '';
+  inp.style.height = 'auto';
+  const sendBtn = document.getElementById('sendBtn');
+  sendBtn.disabled = true;
+  document.getElementById('chipsWrap').style.display = 'none';
+
+  addUserMsg(text);
+  chatHistory.push({ role:'user', content: text });
+
+  // Show typing dots immediately, then morph into the live-streaming bubble
+  const typId = addTyping();
+  let bubble = null;
+  let raw = '';
+  let gotFirstToken = false;
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        system: SYSTEM,
+        messages: chatHistory,
+        stream: true
+      })
+    });
+
+    if (!res.ok || !res.body) throw new Error('Bad response');
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+
+      // SSE frames are separated by blank lines
+      const frames = buf.split('\n\n');
+      buf = frames.pop(); // keep last (possibly incomplete) frame in buffer
+
+      for (const frame of frames) {
+        const line = frame.split('\n').find(l => l.startsWith('data: '));
+        if (!line) continue;
+        const payload = line.slice(6).trim();
+        if (payload === '[DONE]') continue;
+
+        let evt;
+        try { evt = JSON.parse(payload); } catch { continue; }
+
+        if (evt.type === 'content_block_delta' && evt.delta?.text) {
+          if (!gotFirstToken) {
+            removeTyping(typId);
+            bubble = addAgentMsg('');
+            gotFirstToken = true;
+          }
+          raw += evt.delta.text;
+          bubble.innerHTML = raw
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n/g, '<br>');
+          scrollChat();
+        }
+      }
+    }
+
+    if (!gotFirstToken) {
+      // Stream ended with nothing usable
+      removeTyping(typId);
+      raw = "I'm having trouble right now. Please try again.";
+      addAgentMsg(raw);
+    }
+    chatHistory.push({ role:'assistant', content: raw });
+  } catch {
+    removeTyping(typId);
+    if (bubble) {
+      raw = raw || "Sorry, connection issue. Please try again. 🙏";
+      bubble.innerHTML = raw.replace(/\n/g, '<br>');
+    } else {
+      addAgentMsg("Sorry, connection issue. Please try again. 🙏");
+    }
+  }
+
+  sendBtn.disabled = false;
+  inp.focus();
+}
+
+function addUserMsg(text) {
+  const el = document.createElement('div');
+  el.className = 'msg user';
+  el.textContent = text;
+  document.getElementById('chatMsgs').appendChild(el);
+  scrollChat();
+}
+
+function addAgentMsg(text) {
+  const el = document.createElement('div');
+  el.className = 'msg agent';
+  el.innerHTML = text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  document.getElementById('chatMsgs').appendChild(el);
+  scrollChat();
+  return el;
+}
+
+function addTyping() {
+  const id = 'typ-' + Date.now();
+  const el = document.createElement('div');
+  el.className = 'msg agent';
+  el.id = id;
+  el.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+  document.getElementById('chatMsgs').appendChild(el);
+  scrollChat();
+  return id;
+}
+
+function removeTyping(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function scrollChat() {
+  const el = document.getElementById('chatMsgs');
+  el.scrollTop = el.scrollHeight;
+}
+
+// ── SERVICE WORKER ──
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+// ── PWA INSTALL ──
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const banner = document.getElementById('installBanner');
+  banner.style.display = 'flex';
+});
+
+document.getElementById('installBtn').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  document.getElementById('installBanner').style.display = 'none';
+});
+
+window.addEventListener('appinstalled', () => {
+  document.getElementById('installBanner').style.display = 'none';
+});
+</script>
+</body>
+</html>
